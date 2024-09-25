@@ -195,5 +195,8 @@ def delete_product(request, product_id):
         return JsonResponse({'success': False}, status=400)
 
 
-def custom_permission_denied_view(request):
+def custom_permission_denied_view(request, exception):
     return render(request, '403.html', status=403)
+
+def custom_page_not_found(request, exception):
+    return render(request, '404.html', status=404)
