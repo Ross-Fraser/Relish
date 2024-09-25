@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'origin_products' continent_name=continent_name %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'product_detail' product_id=product.product_id %}" class="breadcrumbs-link">{{ product.name }}</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'purchase_form' product_id=product.product_id %}" class="breadcrumbs-link">Purchase Enquiry</a></li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto mt-5">
+            <div class="product_form">
+                <div class="card-header">
+                    <h1>Purchase a bag of {{ product.name }}</h1>
+                </div>
+                <div class="card-body">
+                    <form method="post" class="my-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

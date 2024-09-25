@@ -1,131 +1,197 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![home_screen](staticfiles/images/screenshots/home_screen.webp)
+figure 1 - Home screen
 
-Welcome USER_NAME,
+# Relish - Coffee Shop Website
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Welcome to Relish, your ultimate online coffee shop experience! This project aims to create an interactive and user-friendly website for our coffee shop, providing customers with an easy way to browse and make enquires.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Introduction
 
-## Gitpod Reminders
+Relish is a web-based application designed to streamline the coffee ordering process for customers. The website features an intuitive interface where users can explore our menu and customize their orders.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Key Objectives
 
-`python3 -m http.server`
+The key objectives for the Relish coffee shop website project are as follows:
 
-A blue button should appear to click: _Make Public_,
+Enhance User Experience:
 
-Another blue button should appear to click: _Open Browser_.
+Provide an intuitive and visually appealing interface for customers to browse and make enquires.
+Ensure the website is responsive and accessible on various devices and screen sizes.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+Efficient Data Management:
 
-A blue button should appear to click: _Make Public_,
+Implement a robust database structure using Entity-Relationship Diagrams (ERDs) to ensure data integrity and efficiency.
+Facilitate easy addition, modification, and deletion of menu items by the admin through a user-friendly admin interface.
+Security and Reliability:
 
-Another blue button should appear to click: _Open Browser_.
+Ensure secure handling of user data, including encrypted storage of passwords.
+Perform thorough testing, including unit tests, to ensure the reliability and correctness of the codebase.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+Maintainability and Scalability:
 
-To log into the Heroku toolbelt CLI:
+Write clean, maintainable, and well-documented code adhering to coding standards such as PEP8 for Python.
+Design the system to be scalable to handle an increasing number of users and orders as the business grows.
+Compliance with Web Standards:
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+Validate HTML, CSS, and JavaScript code to ensure compliance with web standards and improve cross-browser compatibility.
+Ensure the website is accessible to users with disabilities, following accessibility guidelines.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+## Design Process
 
-### Connecting your Mongo database
+### 1. Requirements Gathering
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+The initial step involved identifying user needs and functionality requirements for the relish application. This included:
 
-------
+User registration and authentication
+Product management (CRUD operations)
+Category and coffee origin selection
+Image upload and display
+Price and currency handling
 
-## Release History
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### 2. Entity Relationship Diagram (ERD)
 
-**June 18, 2024,** Add Mongo back into template
+To visualize the data structure and relationships between various entities in the application, an Entity Relationship Diagram was created. The primary entities include:
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+Product: Represents coffee products, including details like name, description, price, currency, and associated images.
+Category: Represents different categories of products.
+CoffeeOrigin: Represents the origin of the coffee beans.
+CoffeeGrind: Represents the grind types available for products.
+CoffeeSize: Represents different sizes available for products.
+ERD Diagram
 
-**May 28 2024:** Fix Mongo and Links installs
+![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.webp)
+figure 2 - Entity-Relationship Diagrams (ERD)
 
-**April 26 2024:** Update node version to 16
+3. Wireframes
+Wireframes were designed to outline the user interface and user experience. They serve as blueprints for the layout and functionality of key pages within the application.
 
-**September 20 2023:** Update Python version to 3.9.17.
+## User Stories
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+User stories were essential in guiding the development process, ensuring that the website meets the needs of its users.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### Screenshots
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+![main screen](staticfiles/images/screenshots/home_screen.webp)
+figure 3 - Main screen
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+![product_detail](staticfiles/images/screenshots/product_detail.webp)
+figure 4 - product detail page
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+![purchase_form](staticfiles/images/screenshots/purchase_form.webp)
+figure 5 - purchase form
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+![register_form](staticfiles/images/screenshots/register_form.webp)
+figure 6 - register form
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
+figure 7 - crud menu
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+### 2. Responsive Design
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+#### Overview
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+Responsive design is a crucial aspect of the relish application, ensuring that users have a seamless experience across various devices, including desktops, tablets, and smartphones. The design adapts fluidly to different screen sizes and orientations, enhancing usability and accessibility.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+Key Principles
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+- Fluid Grids: The layout is constructed using a fluid grid system, allowing elements to resize proportionally based on the screen width. This approach ensures that content is well-distributed and easy to navigate on all devices.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+- Flexible Images: Images within the application are designed to be responsive, utilizing CSS properties such as max-width: 100%; and height: auto;. This ensures that images resize appropriately without losing their aspect ratio, providing a visually appealing experience.
 
-------
+- Media Queries: CSS media queries are employed to apply different styles based on device characteristics, such as width and resolution. This allows for adjustments in layout, font sizes, and element visibility for optimal presentation on various devices.
 
-## FAQ about the uptime script
+### 4. Stylish UI/UX
 
-**Why have you added this script?**
+Design an aesthetically pleasing user interface with appropriate styling using CSS. Utilize visual elements to enhance the experience and make the interface more engaging.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### 5. Code Organization
 
-**How will this affect me?**
+Maintain a well-organized codebase with clear separation of concerns. Use separate HTML, CSS, and JavaScript files to enhance readability and ease of maintenance. Comment the code where necessary to provide insights into the implementation details.
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+# Testing
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+## Unit Tests
 
-**So….?**
+Unit tests were written to ensure the reliability and correctness of the code. Each function and component of the website was tested individually to verify that they work as expected. The tests cover various aspects such as:
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+Form validation
+User authentication
+Enquiry processing
+Menu item management
+Code Validation
 
-**Can I opt out?**
+The test results can be seen in the TESTING.md file.
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+All Python code was validated against the PEP8 style guide to maintain readability and consistency. PEP8 compliance helps in keeping the codebase clean and manageable.
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+## HTML Validator
 
-**Anything more?**
+The HTML code was validated using the W3C HTML Validator to ensure it meets web standards but has one error.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+- The Ethiopian paragraph is doubled up on open and close tags <p> </p>, but when I check the admin panel and click on code view they are not doubled up.
 
----
+#### Testing Screenshots
 
-Happy coding!
+![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.png)
+figure 8 - Home screen lighthouse test
+
+![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.png)
+figure 9 - product detail lighthouse test
+
+![lighthouse_purchase_enquiry_desktop](staticfiles/images/screenshots/lighthouse_purchase_enquiry_desktop.png)
+figure 10 - purchase enquiry lighthouse test
+
+## Bugs
+
+There are no bugs in the system.
+
+# Deployment
+
+## Prerequisites
+
+Python 3.x
+Django
+A web browser for testing
+
+## Deployment steps
+
+Clone the repository: git clone https://github.com/Ross-Fraser/relish.git
+
+Navigate to the project directory: cd relish
+
+Install the required dependencies: pip install -r requirements.txt
+
+Configured environment variables.
+
+Ran migrations.
+
+Collected static files.
+
+deploy to heroku
+
+
+## Usage
+
+To start the development server, run:
+
+python manage.py runserver
+
+Open your web browser and go to http://127.0.0.1:8000/ to see the website in action.
+
+## Contributing
+
+We welcome contributions to improve Relish! Please fork the repository and submit pull requests for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Credit
+
+Code Institute for template
+Code Institute for the deployment terminal.
+PEP8 Validator for code validation.
+3wSchools.com for breadcrumbs and permissions

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}" class="breadcrumbs-link">Home</a>
+    &nbsp;/&nbsp;</li>
+<li><a href="{% url 'origin_products' continent_name=continent_name %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'product_detail' product_id=product.product_id %}" class="breadcrumbs-link">{{ product.name }}</a></li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            {% if success_message %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>{{ success_message}}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            {% if "placeholder" in product.image.url %}
+            <img src="{% static product.image %}" alt="{{ product.name }}" class="img-fluid">
+            {% else %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description | safe }}</p>
+            <p>Price: {{ product.get_currency_symbol }}{{ product.price }}</p>
+            <form action="{% url 'purchase_form' product.product_id %}" method="get">
+                <button type="submit">Purchase</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'origin_products' continent_name='continent_name' %}" class="breadcrumbs-link">{{ continent_name }} Coffee</a></li>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 mt-3 text-center">
+            <h1>{{ continent_name }} Coffee</h1>
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="{% url 'product_detail' product.product_id %}" class="country-link">
+                            <div class="image-container">
+                                {% if "placeholder" in product.image.url %}
+                                <img src="{% static 'images/placeholder.jpg' %}" alt="{{ product.name }}" class="img-fluid">
+                                {% else %}
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid">
+                                {% endif %}
+                            </div>
+                                <h2 class="card-title">{{ product.name|lower|capfirst}}</h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

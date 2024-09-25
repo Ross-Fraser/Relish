@@ -1,0 +1,56 @@
+[
+    {
+        "model": "roastery.product",
+        "pk": null,
+        "fields": {
+            "category": "2",
+            "origin_id": "3",
+            "grind_id": "3",
+            "size_id": "1",
+            "manufacturer": "Relish",
+            "name": "Blue Mountain",
+            "slug": "blue-mountain",
+            "description": "<p>Our Kenyan Blue Mountain coffee treats your taste buds to a deliciously sweet yet balanced and fruity flavour. Its a must try.</p>",
+            "price": "7.45",
+            "currency": "GBP",
+            "created":"2024-05-22 17:10:02 +0000",
+            "updated":"2024-05-22 17:10:02 +0000"
+        }
+    },
+    {
+        "model": "roastery.product",
+        "pk": null,
+        "fields": {
+            "category": "3",
+            "origin_id": "4",
+            "grind_id": "5",
+            "size_id": "1",
+            "manufacturer": "Relish",
+            "name": "Ugandan",
+            "slug": "ugandan",
+            "description": "<p>Looking for a unique coffee experience? Try Uganda Robusta Coffee! This 100% Arabica coffee is single origin, meaning its sourced from a single country.</p>",
+            "price": "7.45",
+            "currency": "GBP",
+            "created":"2024-05-22 17:11:34 +0000",
+            "updated":"2024-05-22 17:11:34 +0000"
+        }
+    },
+    {
+        "model": "roastery.product",
+        "pk": null,
+        "fields": {
+            "category": "2",
+            "origin_id": "7",
+            "grind_id": "4",
+            "size_id": "1",
+            "manufacturer": "Relish",
+            "name": "Brazil",
+            "slug": "brazil",
+            "description": "<p>Our Brazilian Agua Santa coffee is fantastic! Its so tasty and aromatic, because its single origin natural processed Arabica with a medium roasted taste best for hand or machine brewing, melding into delicious lattes or mochas, gooey macchiatos, chocolatey cappuccinos. Nutty and balanced in flavour like they say abroad “Brazilian Coffee is the BEST”</p>",
+            "price": "7.45",
+            "currency": "GBP",
+            "created":"2024-05-22 17:25:24 +0000",
+            "updated":"2024-05-22 17:25:24 +0000"
+        }
+    }
+]
