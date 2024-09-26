@@ -9,10 +9,24 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
 
 {% block content %}
 <h1>Your Shopping Bag</h1>
+
+<!-- Currency Selector -->
+<form method="GET" class="currency-selector">
+    <label for="currency">Select Currency:</label>
+    <select name="currency" id="currency" onchange="this.form.submit()">
+        {% for code, name in currency_choices.items %}
+            <option value="{{ code }}" {% if code == selected_currency %}selected{% endif %}>
+                {{ name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>Product</th>
+            <th>Image</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Subtotal</th>
@@ -21,21 +35,20 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
     <tbody>
         {% for item in bag_items %}
         <tr>
-            <td>
-                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="150" height="150">
-                {{ item.product.name }}
-            </td>
-            <td>£{{ item.product.price }}</td>
+            <td>{{ item.product.name }}</td>
+            <td><img src="{{ item.product.image.url }}"
+            alt="{{ item.product.name }}" width="150"></td>
+            <td>{{ symbol }}{{ item.product.price }}</td>
             <td>{{ item.quantity }}</td>
-            <td>£{{ item.quantity|floatformat:2|add:item.product.price|floatformat:2 }}</td>
+            <td>{{ symbol }}{{ item.get_total_price }}</td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4">Your bag is empty.</td>
+            <td colspan="5">Your bag is empty.</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<h3>Total: £{{ total_price }}</h3>
+<h3>Total: {{ symbol }}{{ total_price }}</h3>
 {% endblock %}
