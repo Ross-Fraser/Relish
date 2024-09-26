@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'roastery',
     'accounts',
+    'bag',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +84,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'accounts', 'templates', 'registration'),
             os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
+            os.path.join(BASE_DIR, 'bag', 'templates', 'bag'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

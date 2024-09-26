@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}"
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li class="active">Shopping Bag</li>
+{% endblock %}
+
+{% block content %}
+<h1>Your Shopping Bag</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in bag_items %}
+        <tr>
+            <td>
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="150" height="150">
+                {{ item.product.name }}
+            </td>
+            <td>£{{ item.product.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>£{{ item.quantity|floatformat:2|add:item.product.price|floatformat:2 }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Your bag is empty.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3>Total: £{{ total_price }}</h3>
+{% endblock %}

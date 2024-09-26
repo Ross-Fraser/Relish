@@ -13,4 +13,5 @@ urlpatterns = [
     path("", include("django.contrib.auth.urls")),
     path("roastery/", include("roastery.urls")),
     path("", include("roastery.urls")),
+    path("bag/", include("bag.urls")),
 ]
