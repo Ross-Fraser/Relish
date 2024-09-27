@@ -41,6 +41,21 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
             <td>{{ symbol }}{{ item.product.price }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ symbol }}{{ item.get_total_price }}</td>
+            <td>
+                <div class="d-flex">
+                    <form method="post" action="{% url 'bag:update_bag_item' item.id %}" class="me-2">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control form-control-sm d-inline-block" style="width: 70px;">
+                        <button type="submit" class="btn btn-sm btn-primary">Update</button>
+                    </form>
+                    <form method="post" action="{% url 'bag:remove_from_bag' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </form>
+                </div>
+            </td>
         </tr>
         {% empty %}
         <tr>
