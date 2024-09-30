@@ -341,6 +341,53 @@ body {
     gap: 5px;
 }
 
+
+/*--------------------------------------------------- Shopping bag icon */
+.bag-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.bag-container .nav-link {
+    display: flex;
+    align-items: center;
+}
+
+.bag-container .badge {
+    margin-left: 5px;
+}
+
+.badge {
+    position: absolute !important;
+    top: -8px;
+    right: -8px;
+    padding: 4px 6px;
+    border-radius: 50%;
+    background-color: red !important;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+    line-height: 1;
+}
+
+/*--------------------------------------------------- Shopping bag table */
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table img {
+    max-width: 100%;
+    height: auto;
+}
+
+.table {
+    width: 100%;
+}
 /*---------------------------------------------------Media Queries*/
 @media (max-width: 768px) {
 
@@ -400,6 +447,23 @@ body {
 
     .brand-name {
         font-size: 30px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table td img {
+        max-width: 80px;
+    }
+
+    .currency-selector {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .d-flex {
+        flex-direction: column;
     }
 }
 
