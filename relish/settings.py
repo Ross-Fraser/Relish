@@ -57,6 +57,10 @@ INSTALLED_APPS = [
     'roastery',
     'accounts',
     'bag',
+    'checkout',
+    
+    # Other
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +81,8 @@ INTERNAL_IPS = [
 
 ROOT_URLCONF = 'relish.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -85,6 +91,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'accounts', 'templates', 'registration'),
             os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
             os.path.join(BASE_DIR, 'bag', 'templates', 'bag'),
+            os.path.join(BASE_DIR, 'checkout', 'templates', 'checkout'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -93,7 +100,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
