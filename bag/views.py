@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import BagItem
-from roastery.models import Product
-from roastery.models import CURRENCY_CHOICES, CURRENCY_SYMBOLS
+from roastery.models import Product, CURRENCY_CHOICES, CURRENCY_SYMBOLS
 
 @login_required
 def bag_detail(request):
