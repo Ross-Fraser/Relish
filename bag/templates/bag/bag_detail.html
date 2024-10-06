@@ -27,17 +27,18 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
         <thead>
             <tr>
                 <th>Product</th>
+                <th>Size</th>
                 <th>Image</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
-
             </tr>
         </thead>
         <tbody>
             {% for item in bag_items %}
             <tr>
                 <td>{{ item.product.name }}</td>
+                <td>{{ item.product.size }}</td>
                 <td>
                     <img src="{{ item.product.image.url }}"
                     alt="{{ item.product.name }}" class="img-fluid" style="max-width: 100px;">
@@ -63,14 +64,42 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5">Your bag is empty.</td>
+                <td colspan="5">
+                    <p class="lead mb-5">Your bag is empty.</p>
+                    <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep Shopping</span>
+                    </a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
 
-<div class="text-end">
-    <h3>Total: {{ symbol }}{{ total_price }}</h3>
-</div>
+<!-- Only show the "Keep Shopping" and "Secure Checkout" buttons if there are items in the bag -->
+{% if total_price > 0 %}
+    <tr>
+        <td colspan="5" class="text-right">
+            <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+            <a href="" class="btn btn-black rounded-0 btn-lg">
+                <span class="text-uppercase">Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </a>
+        </td>
+    </tr>
+    <div class="text-end">
+        <h3>Total: {{ symbol }}{{ total_price }}</h3>
+    </div>
+{% endif %}
+
 {% endblock %}
