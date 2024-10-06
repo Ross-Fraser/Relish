@@ -14,4 +14,5 @@ urlpatterns = [
     path("roastery/", include("roastery.urls")),
     path("", include("roastery.urls")),
     path("bag/", include("bag.urls")),
+     path('checkout/', include('checkout.urls')),
 ]
