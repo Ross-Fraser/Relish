@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}"
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li class="active">Shopping Bag</li>
+{% endblock %}
+
+{% block content %}
+<h1>Your Shopping Bag</h1>
+
+<!-- Currency Selector -->
+<form method="GET" class="currency-selector">
+    <label for="currency">Select Currency:</label>
+    <select name="currency" id="currency" onchange="this.form.submit()" class="form-select form-select-sm">
+        {% for code, name in currency_choices.items %}
+            <option value="{{ code }}" {% if code == selected_currency %}selected{% endif %}>
+                {{ name }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped w-100">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Size</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in bag_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.size }}</td>
+                <td>
+                    <img src="{{ item.product.image.url }}"
+                    alt="{{ item.product.name }}" class="img-fluid" style="max-width: 100px;">
+                </td>
+                <td>{{ symbol }}{{ item.product.price }}</td>
+                <td>
+                    <form method="post" action="{% url 'bag:update_bag_item' item.id %}" class="d-inline-block">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control form-control-sm d-inline-block" style="width: 70px;">
+                    </form>
+                </td>
+                <td>{{ symbol }}{{ item.get_total_price }}</td>
+                <td>
+                    <div class="d-flex justify-content-end">
+                        <form method="post" action="{% url 'bag:remove_from_bag' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="bi bi-x"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">
+                    <p class="lead mb-5">Your bag is empty.</p>
+                    <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Keep Shopping</span>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Only show the "Keep Shopping" and "Secure Checkout" buttons if there are items in the bag -->
+{% if total_price > 0 %}
+    <tr>
+        <td colspan="5" class="text-right">
+            <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="text-uppercase">Keep Shopping</span>
+            </a>
+            <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
+                <span class="text-uppercase">Secure Checkout</span>
+                <span class="icon">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </a>
+        </td>
+    </tr>
+    <div class="text-end">
+        <h3>Total: {{ symbol }}{{ total_price }}</h3>
+    </div>
+{% endif %}
+
+{% endblock %}

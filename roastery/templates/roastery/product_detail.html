@@ -25,11 +25,13 @@
             {% endif %}
         </div>
         <div class="col-md-6">
-            <h1>{{ product.name }}</h1>
+            <h1>{{ product.name }} -</h1>
+            <p>{{ product.size | safe }}</p>
             <p>{{ product.description | safe }}</p>
             <p>Price: {{ product.get_currency_symbol }}{{ product.price }}</p>
-            <form action="{% url 'purchase_form' product.product_id %}" method="get">
-                <button type="submit">Purchase</button>
+            <form action="{% url 'bag:add_to_bag' product.product_id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Add to Basket</button>
             </form>
         </div>
     </div>
