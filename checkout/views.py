@@ -35,6 +35,9 @@ def checkout(request):
         'grand_total': grand_total,
         'symbol': symbol,
         'order_form': order_form,
+        'stripe_public_key': 'pk_test_51PZwLdL3WKBm6McFjSmE1IthDxTRoifGWc'
+        'IOJ6FwkRs5Tcov6hjEmdFIXK42swPYZSDOBTsnkzMS0x4gAiUocBzy00xEFpvpKP',
+        'client_secret': 'test client secret',
     }
 
     return render(request, template, context)
