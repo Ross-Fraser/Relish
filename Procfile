@@ -1,1 +1,1 @@
-web: gunicorn relish.wsgi --timeout 90 --log-file -
+web: gunicorn relish.wsgi:application
