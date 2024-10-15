@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block breadcrumbs %}
+<li><a href="{% url 'home' %}" 
+class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
+<li><a href="{% url 'profile' %}"
+class="breadcrumbs-link">Profile</a></li>
+{% endblock breadcrumbs %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
 {% endblock extra_css %}
@@ -19,7 +26,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">My Profile</h2>
+                <h2 class="logo-font mb-4">{{ user.username }} Profile</h2>
                 <hr>
             </div>
         </div>
