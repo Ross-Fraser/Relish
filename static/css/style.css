@@ -384,6 +384,16 @@ body {
 .table {
     width: 100%;
 }
+
+/*---------------------------------------------------MailChimp*/
+#mc_embed_signup {
+    background: #fff;
+    clear: left;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    width: 600px;
+}
+
 /*---------------------------------------------------Media Queries*/
 @media (max-width: 768px) {
 
