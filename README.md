@@ -1,6 +1,8 @@
 ![home_screen](staticfiles/images/screenshots/home_screen.webp)
 figure 1 - Home screen
 
+**Note:** This project builds upon the foundational work from Project 4, enhancing it with additional features and improvements.
+
 # Relish - Coffee Shop Website
 
 Welcome to Relish, your ultimate online coffee shop experience! This project aims to create an interactive and user-friendly website for our coffee shop, providing customers with an easy way to browse and make enquires.
@@ -36,6 +38,24 @@ Compliance with Web Standards:
 Validate HTML, CSS, and JavaScript code to ensure compliance with web standards and improve cross-browser compatibility.
 Ensure the website is accessible to users with disabilities, following accessibility guidelines.
 
+## Third-Party Integrations
+
+### Stripe
+
+Stripe is used for handling secure payments in the Relish shop. It allows customers to complete their purchases using card payment methods while ensuring that all transactions are processed safely and efficiently.
+
+### Facebook
+Screenshots of the Relish Facebook page have been used to provide users with a visual representation of our social media presence.
+
+![facebook_page_1](staticfiles/images/screenshots/facebook_page_1.webp)
+figure 2 - Facebook Page_1
+
+![facebook_page_2](staticfiles/images/screenshots/facebook_page_2.webp)
+figure 3 - Facebook Page_2
+
+### Mailchimp
+Mailchimp integration enables the collection and management of customer email subscriptions. It allows us to send newsletters, promotional offers, and updates directly to our users, helping to maintain engagement with our audience.
+
 ## Design Process
 
 ### 1. Requirements Gathering
@@ -61,7 +81,7 @@ CoffeeSize: Represents different sizes available for products.
 ERD Diagram
 
 ![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.webp)
-figure 2 - Entity-Relationship Diagrams (ERD)
+figure 4 - Entity-Relationship Diagrams (ERD)
 
 3. Wireframes
 Wireframes were designed to outline the user interface and user experience. They serve as blueprints for the layout and functionality of key pages within the application.
@@ -70,23 +90,32 @@ Wireframes were designed to outline the user interface and user experience. They
 
 User stories were essential in guiding the development process, ensuring that the website meets the needs of its users.
 
+![user_stories](staticfiles/images/screenshots/user_stories.webp)
+figure 5 - User Stories
+
 
 ### Screenshots
 
-![main screen](staticfiles/images/screenshots/home_screen.webp)
-figure 3 - Main screen
-
-![product_detail](staticfiles/images/screenshots/product_detail.webp)
-figure 4 - product detail page
-
-![purchase_form](staticfiles/images/screenshots/purchase_form.webp)
-figure 5 - purchase form
+![main_screen](staticfiles/images/screenshots/home_screen.webp)
+figure 6 - Main screen
 
 ![register_form](staticfiles/images/screenshots/register_form.webp)
-figure 6 - register form
+figure 7 - Register form
+
+![login_screen](staticfiles/images/screenshots/login_screen.webp)
+figure 8 - Login screen
+
+![product_detail](staticfiles/images/screenshots/product_detail.webp)
+figure 9 - Product detail page
+
+![shopping_bag](staticfiles/images/screenshots/shopping_bag.webp)
+figure 10 - Shopping_bag
+
+![checkout_success](staticfiles/images/screenshots/checkout_success.webp)
+figure 11 - Checkout_success
 
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
-figure 7 - crud menu
+figure 12 - CRUD menu
 
 ### 2. Responsive Design
 
@@ -136,13 +165,10 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 #### Testing Screenshots
 
 ![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.png)
-figure 8 - Home screen lighthouse test
+figure 13 - Home screen lighthouse test
 
 ![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.png)
-figure 9 - product detail lighthouse test
-
-![lighthouse_purchase_enquiry_desktop](staticfiles/images/screenshots/lighthouse_purchase_enquiry_desktop.png)
-figure 10 - purchase enquiry lighthouse test
+figure 14 - product detail lighthouse test
 
 ## Bugs
 
@@ -191,7 +217,7 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Credit
 
-Code Institute for template
+Code Institute for template and stripe
 Code Institute for the deployment terminal.
 PEP8 Validator for code validation.
 3wSchools.com for breadcrumbs and permissions
