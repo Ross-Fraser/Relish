@@ -14,6 +14,7 @@ from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from checkout.models import Order, OrderLineItem
 
+
 @require_POST
 def cache_checkout_data(request):
     try:
@@ -29,6 +30,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 @login_required
 def checkout(request):
@@ -67,7 +69,7 @@ def checkout(request):
             'town_or_city': request.POST.get('town_or_city', ''),
             'county': request.POST.get('county', ''),
             'postcode': request.POST.get('postcode', ''),
-            'country': request.POST.get('country', ''),          
+            'country': request.POST.get('country', ''),
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -91,10 +93,12 @@ def checkout(request):
             BagItem.objects.filter(user=request.user).delete()
 
             # Redirect to the checkout success page
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
 
         else:
-            messages.error(request, 'There was an error with your form. Please double check your information.')
+            messages.error(request, 'There was an error with your form. '
+                           'Please double check your information.')
 
     if request.user.is_authenticated:
         initial_data = {
@@ -119,6 +123,7 @@ def checkout(request):
     }
 
     return render(request, template, context)
+
 
 def checkout_success(request, order_number):
     """

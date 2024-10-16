@@ -214,9 +214,12 @@ class="breadcrumbs-link">Home</a>&nbsp;/&nbsp;</li>
                         <span class="text-uppercase">Back to Profile</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'home' %}" class="btn btn-black rounded-0 my-2">
-                        <span class="text-uppercase">Return Home</span>
-                    </a>
+                    <a href="{% url 'home' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                    <span class="text-uppercase">Return Home</span>
+                </a>
                 {% endif %}
 			</div>
 		</div>

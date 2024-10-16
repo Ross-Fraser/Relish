@@ -1,5 +1,6 @@
 from .models import BagItem
 
+
 def bag_items_count(request):
     total_items = 0
     if request.user.is_authenticated:
