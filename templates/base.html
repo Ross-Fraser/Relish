@@ -85,7 +85,7 @@
                 </nav>
             </div>
 
-             <!-- Bag icon -->
+            <!-- Bag icon -->
             <div class="bag-container">
                 <ul class="nav">
                     <li class="nav-item">
@@ -97,6 +97,23 @@
                     </li>
                 </ul>
             </div>
+
+            <!-- Products Menu -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto list-unstyled">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link text-dark" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-box-open"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'products' %}">Products</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
 
             <!-- User Menu -->
             <div class="user-menu ms-auto">

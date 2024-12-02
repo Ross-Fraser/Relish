@@ -42,6 +42,11 @@ class ProductList(generic.ListView):
     paginate_by = 6
 
 
+def products_list(request):
+    products = Product.objects.all()
+    return render(request, 'products_list.html', {'products': products})
+
+
 def origin_products(request, continent_name=None):
 
     if not continent_name:
@@ -155,10 +160,11 @@ def create_product(request):
 
 
 @login_required
-def products_list(request):
+@permission_required('roastery.manage_products', raise_exception=True)
+def manage_products(request):
     products = Product.objects.all()
     success_message = request.GET.get('success_message', None)
-    return render(request, 'roastery/products_list.html',
+    return render(request, 'roastery/manage_products.html',
                   {'products': products, 'success_message': success_message})
 
 
