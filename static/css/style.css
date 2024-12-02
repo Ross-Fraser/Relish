@@ -383,12 +383,12 @@ body {
 
 /*---------------------------------------------------MailChimp*/
 #mc_embed_signup {
-    background: #fff;
-    clear: left;
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    width: 600px;
-}
+    max-width: 100%; /* Ensures the form doesn’t exceed the screen width */
+  }
+  
+  #mc_embed_shell {
+    width: 100%; /* Ensures the container adapts to screen size */
+  }
 
 /*---------------------------------------------------Media Queries*/
 @media (max-width: 768px) {
@@ -432,6 +432,18 @@ body {
         max-width: 150px;
         font-size: 0.8rem;
     }
+
+    #mc_embed_signup {
+        padding: 20px;
+    }
+    
+    #mc_embed_signup h2 {
+        font-size: 1.25rem;
+    }
+    
+    #mc_embed_signup .form-label {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 576px) {
@@ -466,6 +478,18 @@ body {
 
     .d-flex {
         flex-direction: column;
+    }
+
+    #mc_embed_signup {
+        padding: 15px;
+    }
+    
+    #mc_embed_signup h2 {
+        font-size: 1rem;
+    }
+    
+    #mc_embed_signup p {
+        font-size: 0.9rem;
     }
 }
 
