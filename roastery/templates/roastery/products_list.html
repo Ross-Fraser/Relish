@@ -18,9 +18,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="text-muted">Price: {{ product.get_currency_symbol }}{{ product.price }}</p>
-                    <a href="{% url 'product_detail' product_id=product.product_id %}">View Details</a>
+                    <a href="{% url 'product_detail' product_id=product.product_id %}" class="btn btn-secondary me-3">View Details</a>
                     <a href="{% url 'bag:add_to_bag' product.product_id %}" class="btn btn-primary">Add to Basket</a>
-
                 </div>
             </div>
         </div>
