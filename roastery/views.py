@@ -1,13 +1,10 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.mail import send_mail
-from django.conf import settings
-from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.urls import reverse
-from .forms import PurchaseEnquiryForm, ProductForm
+from .forms import ProductForm
 from django.views import generic
-from .models import CoffeeOrigin, Product, CONTINENT_CHOICES
+from .models import Product, CONTINENT_CHOICES
 from django.db.models import Q
 
 
@@ -100,66 +97,6 @@ def product_detail(request, product_id):
         'success_message': success_message,
     }
     return render(request, 'product_detail.html', context)
-
-
-def purchase_form(request, product_id):
-    product = get_object_or_404(Product, product_id=product_id)
-
-    if request.method == 'POST':
-        form = PurchaseEnquiryForm(request.POST)
-        if form.is_valid():
-            # Send enquiry email to the store owner
-            send_mail(
-                subject=f'I would like to purchase a bag of '
-                        f'{form.cleaned_data["product_name"]}',
-                message=(
-                    f'Name: {form.cleaned_data["name"]}\n'
-                    f'Address: {form.cleaned_data["address"]}\n'
-                    f'Contact Number: {form.cleaned_data["contact_number"]}\n'
-                    f'Email Address: {form.cleaned_data["email_address"]}\n'
-                    f'Grind: {form.cleaned_data["grind"]}\n'
-                    f'Product Price: {form.cleaned_data["product_price"]}'
-                ),
-                from_email=form.cleaned_data["email_address"],
-                recipient_list=[settings.EMAIL_HOST_USER],
-            )
-
-            # Send confirmation email to the user
-            send_mail(
-                subject='Your purchase enquiry has been received',
-                message=(
-                    f'Thank you for your enquiry,'
-                    f'{form.cleaned_data["name"]}.\n\n'
-                    f'Here are the details of your enquiry:\n'
-                    f'Product Name: {form.cleaned_data["product_name"]}\n'
-                    f'Product Price: {form.cleaned_data["product_price"]}\n'
-                    f'Grind: {form.cleaned_data["grind"]}\n'
-                    'We will contact you shortly with more information.'
-                ),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[form.cleaned_data["email_address"]],
-            )
-
-            success_message = "Thank you for your enquiry. We will get back " \
-                              "to you soon."
-            return HttpResponseRedirect(
-                f'{reverse("product_detail", args=[product_id])}?'
-                f'success_message={success_message}'
-            )
-    else:
-        form = PurchaseEnquiryForm(initial={
-            'product_name': product.name,
-            'product_price': product.price
-        })
-
-        context = {
-            'form': form,
-            'product': product,
-            'continent_name': product.origin.get_continent_display(),
-            'country_name': product.origin.get_country_display(),
-        }
-
-    return render(request, 'purchase_form.html', context)
 
 
 @login_required
