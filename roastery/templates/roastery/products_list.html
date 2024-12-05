@@ -10,6 +10,29 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center">Our Products</h1>
+    
+    <!-- Search and Filter Form -->
+    <form method="get" class="mb-4">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="q" value="{{ query }}" class="form-control" placeholder="Search Products...">
+            </div>
+            <div class="col-md-4">
+                <select name="continent" class="form-control">
+                    <option value="">All Continents</option>
+                    {% for code, name in continents.items %}
+                    <option value="{{ code }}" {% if code|stringformat:"d" == continent_filter %}selected{% endif %}>{{ name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </div>
+        </div>
+    </form>
+    
+
+    <!-- Product -->
     <div class="row">
         {% for product in products %}
         <div class="col-md-4 mb-4">

@@ -7,8 +7,8 @@ from django.http import JsonResponse
 from django.urls import reverse
 from .forms import PurchaseEnquiryForm, ProductForm
 from django.views import generic
-from .models import Product, CONTINENT_CHOICES
-from django.contrib import messages
+from .models import CoffeeOrigin, Product, CONTINENT_CHOICES
+from django.db.models import Q
 
 
 def index(request):
@@ -42,9 +42,30 @@ class ProductList(generic.ListView):
     paginate_by = 6
 
 
+from django.db.models import Q
+
 def products_list(request):
+    query = request.GET.get('q', '')
+    continent_filter = request.GET.get('continent', '')
+
     products = Product.objects.all()
-    return render(request, 'products_list.html', {'products': products})
+
+    if query:
+        products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    
+    if continent_filter:
+        products = products.filter(origin__continent=int(continent_filter))
+
+    continent_choices = dict(CONTINENT_CHOICES)
+
+    context = {
+        'products': products,
+        'query': query,
+        'continent_filter': continent_filter,
+        'continents': continent_choices,
+    }
+    return render(request, 'roastery/products_list.html', context)
+
 
 
 def origin_products(request, continent_name=None):
