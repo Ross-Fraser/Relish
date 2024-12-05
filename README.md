@@ -142,7 +142,7 @@ figure 4 - Entity-Relationship Diagrams (ERD)
 ### 3. Wireframes
 Wireframes were designed to outline the user interface and user experience. They serve as blueprints for the layout and functionality of key pages within the application.
 
-![wireframe](staticfiles/images/screenshots/wireframe.png)
+![wireframe](staticfiles/images/screenshots/wireframe.webp)
 figure 5 - Wireframe (ERD)
 
 ## User Stories
@@ -164,17 +164,20 @@ figure 8 - Register form
 ![login_screen](staticfiles/images/screenshots/login_screen.webp)
 figure 9 - Login screen
 
+![profile_screen](staticfiles/images/screenshots/profile_screen.webp)
+figure 10 - Profile screen
+
 ![product_detail](staticfiles/images/screenshots/product_detail.webp)
-figure 10 - Product detail page
+figure 11 - Product detail page
 
 ![shopping_bag](staticfiles/images/screenshots/shopping_bag.webp)
-figure 11 - Shopping_bag
+figure 12 - Shopping bag
 
 ![checkout_success](staticfiles/images/screenshots/checkout_success.webp)
-figure 12 - Checkout_success
+figure 13 - Checkout success
 
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
-figure 13 - CRUD menu
+figure 14 - CRUD menu
 
 ### 2. Responsive Design
 
@@ -224,10 +227,10 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 #### Testing Screenshots
 
 ![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
-figure 14 - Home screen lighthouse test
+figure 15 - Home screen lighthouse test
 
 ![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.webp)
-figure 15 - product detail lighthouse test
+figure 16 - product detail lighthouse test
 
 ## Bugs
 
