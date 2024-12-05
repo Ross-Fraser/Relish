@@ -1,14 +1,11 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.mail import send_mail
-from django.conf import settings
-from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.urls import reverse
-from .forms import PurchaseEnquiryForm, ProductForm
+from .forms import ProductForm
 from django.views import generic
 from .models import Product, CONTINENT_CHOICES
-from django.contrib import messages
+from django.db.models import Q
 
 
 def index(request):
@@ -40,6 +37,32 @@ class ProductList(generic.ListView):
     queryset = Product.objects.all()
     template_name = "roastery/index.html"
     paginate_by = 6
+
+
+from django.db.models import Q
+
+def products_list(request):
+    query = request.GET.get('q', '')
+    continent_filter = request.GET.get('continent', '')
+
+    products = Product.objects.all()
+
+    if query:
+        products = products.filter(Q(name__icontains=query) | Q(description__icontains=query))
+    
+    if continent_filter:
+        products = products.filter(origin__continent=int(continent_filter))
+
+    continent_choices = dict(CONTINENT_CHOICES)
+
+    context = {
+        'products': products,
+        'query': query,
+        'continent_filter': continent_filter,
+        'continents': continent_choices,
+    }
+    return render(request, 'roastery/products_list.html', context)
+
 
 
 def origin_products(request, continent_name=None):
@@ -76,66 +99,6 @@ def product_detail(request, product_id):
     return render(request, 'product_detail.html', context)
 
 
-def purchase_form(request, product_id):
-    product = get_object_or_404(Product, product_id=product_id)
-
-    if request.method == 'POST':
-        form = PurchaseEnquiryForm(request.POST)
-        if form.is_valid():
-            # Send enquiry email to the store owner
-            send_mail(
-                subject=f'I would like to purchase a bag of '
-                        f'{form.cleaned_data["product_name"]}',
-                message=(
-                    f'Name: {form.cleaned_data["name"]}\n'
-                    f'Address: {form.cleaned_data["address"]}\n'
-                    f'Contact Number: {form.cleaned_data["contact_number"]}\n'
-                    f'Email Address: {form.cleaned_data["email_address"]}\n'
-                    f'Grind: {form.cleaned_data["grind"]}\n'
-                    f'Product Price: {form.cleaned_data["product_price"]}'
-                ),
-                from_email=form.cleaned_data["email_address"],
-                recipient_list=[settings.EMAIL_HOST_USER],
-            )
-
-            # Send confirmation email to the user
-            send_mail(
-                subject='Your purchase enquiry has been received',
-                message=(
-                    f'Thank you for your enquiry,'
-                    f'{form.cleaned_data["name"]}.\n\n'
-                    f'Here are the details of your enquiry:\n'
-                    f'Product Name: {form.cleaned_data["product_name"]}\n'
-                    f'Product Price: {form.cleaned_data["product_price"]}\n'
-                    f'Grind: {form.cleaned_data["grind"]}\n'
-                    'We will contact you shortly with more information.'
-                ),
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[form.cleaned_data["email_address"]],
-            )
-
-            success_message = "Thank you for your enquiry. We will get back " \
-                              "to you soon."
-            return HttpResponseRedirect(
-                f'{reverse("product_detail", args=[product_id])}?'
-                f'success_message={success_message}'
-            )
-    else:
-        form = PurchaseEnquiryForm(initial={
-            'product_name': product.name,
-            'product_price': product.price
-        })
-
-        context = {
-            'form': form,
-            'product': product,
-            'continent_name': product.origin.get_continent_display(),
-            'country_name': product.origin.get_country_display(),
-        }
-
-    return render(request, 'purchase_form.html', context)
-
-
 @login_required
 @permission_required('roastery.add_product', raise_exception=True)
 def create_product(request):
@@ -155,10 +118,11 @@ def create_product(request):
 
 
 @login_required
-def products_list(request):
+@permission_required('roastery.manage_products', raise_exception=True)
+def manage_products(request):
     products = Product.objects.all()
     success_message = request.GET.get('success_message', None)
-    return render(request, 'roastery/products_list.html',
+    return render(request, 'roastery/manage_products.html',
                   {'products': products, 'success_message': success_message})
 
 

@@ -85,7 +85,7 @@
                 </nav>
             </div>
 
-             <!-- Bag icon -->
+            <!-- Bag icon -->
             <div class="bag-container">
                 <ul class="nav">
                     <li class="nav-item">
@@ -98,12 +98,29 @@
                 </ul>
             </div>
 
+            <!-- Products Menu -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto list-unstyled">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link text-dark" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-box-open"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{% url 'products' %}">Products</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+
             <!-- User Menu -->
             <div class="user-menu ms-auto">
                 <ul class="navbar-nav d-flex align-items-center">
                     {% if user.is_authenticated and user.is_staff %}
                     <li class="nav-item">
-                        <a href="{% url 'manage_products' %}" class="crud btn">
+                        <a href="{% url 'manage_products' %}">
                             <i class="fa-solid fa-gear"></i>
                         </a>
                     </li>
@@ -142,33 +159,64 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <div class="container">
-            <p class="m-0 text-center" class="social">
-                Follow us:
-                <a href="https://facebook.com" class="social" aria-label="Facebook" class="text-white ms-3" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                <a href="https://twitter.com" class="social" aria-label="Twitter" class="text-white ms-3" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                <a href="https://instagram.com" class="social" aria-label="Instagram" class="text-white ms-3" target="_blank"><i class="fab fa-instagram-square"></i></a>
-            </p>
-        </div>
-
-        <div class="col-12 col-md-6">
-            <!-- Mailchimp Signup Form -->
-            <div id="mc_embed_shell">
-            <div id="mc_embed_signup">
-                <form action="https://herokuapp.us22.list-manage.com/subscribe/post?u=5dd996439f783d550f94e0442&amp;id=adf491b02d&amp;f_id=00aed4e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                  <div id="mc_embed_signup_scroll"><h2>Subscribe to our newsletter</h2>
-                    <p>Get the latest news and offers from Relish</p>
-                      <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-                      <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div>
-                  <div id="mce-responses" class="clear">
-                      <div class="response" id="mce-error-response" style="display: none;"></div>
-                      <div class="response" id="mce-success-response" style="display: none; color: #ffffff"></div>
-                  </div><div aria-hidden="true" style="position: absolute; left: -5000px;"><input type="text" name="b_5dd996439f783d550f94e0442_adf491b02d" tabindex="-1" value=""></div><div class="clear"><input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe"></div>
-                </div>
-          </form>
+        <div class="container text-center">
+          <p class="mb-2" class="social">Follow us:</p>
+          <div class="social-links">
+            <a href="https://facebook.com" class="social-link" aria-label="Facebook" target="_blank">
+              <i class="fab fa-facebook-square"></i>
+            </a>
+            <a href="https://twitter.com" class="social-link" aria-label="Twitter" target="_blank">
+              <i class="fab fa-twitter-square"></i>
+            </a>
+            <a href="https://instagram.com" class="social-link" aria-label="Instagram" target="_blank">
+              <i class="fab fa-instagram-square"></i>
+            </a>
           </div>
         </div>
-          
+
+
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12 col-sm-10 col-md-8">
+                <!-- Mailchimp Signup Form -->
+                <div id="mc_embed_shell">
+                  <div id="mc_embed_signup" class="p-3 border rounded shadow-sm bg-light">
+                    <form action="https://herokuapp.us22.list-manage.com/subscribe/post?u=5dd996439f783d550f94e0442&amp;id=adf491b02d&amp;f_id=00aed4e1f0" 
+                          method="post" 
+                          id="mc-embedded-subscribe-form" 
+                          name="mc-embedded-subscribe-form" 
+                          class="validate" 
+                          target="_blank">
+                      <div id="mc_embed_signup_scroll">
+                        <h2 class="text-center mb-3">Subscribe to our newsletter</h2>
+                        <p class="text-center">Get the latest news and offers from Relish</p>
+                        <div class="indicates-required text-center">
+                          <span class="asterisk">*</span> indicates required
+                        </div>
+                        <div class="mc-field-group my-3">
+                          <label for="mce-EMAIL" class="form-label">Email Address <span class="asterisk">*</span></label>
+                          <input type="email" name="EMAIL" class="form-control required email" id="mce-EMAIL" required>
+                        </div>
+                        <div id="mce-responses" class="clear">
+                          <div class="response" id="mce-error-response" style="display: none;"></div>
+                          <div class="response text-success" id="mce-success-response" style="display: none;"></div>
+                        </div>
+                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                          <input type="text" name="b_5dd996439f783d550f94e0442_adf491b02d" tabindex="-1">
+                        </div>
+                        <div class="text-center mt-4">
+                          <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary">
+                            Subscribe
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+              
     </footer>
 
     {% block postloadjs %}
