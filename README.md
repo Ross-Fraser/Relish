@@ -3,13 +3,88 @@ figure 1 - Home screen
 
 **Note:** This project builds upon the foundational work from Project 4, enhancing it with additional features and improvements.
 
-# Relish - Coffee Shop Website
+## Intent Behind the Creation of Relish
 
-Welcome to Relish, your ultimate online coffee shop experience! This project aims to create an interactive and user-friendly website for our coffee shop, providing customers with an easy way to browse and make enquires.
+The **Relish** site was created to provide an online shopping experience for coffee enthusiasts. The platform offers a wide selection of premium coffee products sourced from various continents, ensuring diversity and quality. Relish aims to make the process of discovering, purchasing, and enjoying coffee effortless, with a focus on user satisfaction and an aesthetically pleasing, responsive design.
 
-## Introduction
+## Data Features
 
-Relish is a web-based application designed to streamline the coffee ordering process for customers. The website features an intuitive interface where users can explore our menu and customize their orders.
+1. **Product Management**:
+   - Detailed product information including name, price, description, currency, and images.
+   - Categorization based on continents (African, Asian, American) with corresponding visuals.
+   - CRUD functionality for product management by authorized administrators.
+
+2. **User Profiles**:
+   - Secure registration and login system.
+   - Personalized user dashboards to update profile details and view order history.
+
+3. **Shopping Bag and Checkout**:
+   - Dynamic bag management with add, update, and remove functionality.
+   - Checkout process using session-based `bag_items` for real-time updates.
+
+4. **Order Management**:
+   - Integration of `OrderForm` to collect and validate customer data.
+   - Clear and concise feedback messages during checkout and order completion.
+
+---
+
+## Security Features
+
+1. **Authentication & Authorization**:
+   - User authentication system with secure password storage.
+   - Permissions for administrative actions like product deletion.
+
+2. **Data Protection**:
+   - Use of environment variables (`env.py`) to store sensitive keys (e.g., secret key, Stripe public key).
+   - Exclusion of ZIP code in payment data for simplicity and security.
+
+3. **Payment Security**:
+   - Integration with Stripe for processing payments securely.
+   - Protection of cardholder information during transactions.
+
+4. **Error Handling**:
+   - Comprehensive validation for form inputs and database fields to prevent invalid data.
+   - Use of messages to guide users through potential errors and successful actions.
+
+5. **External Integrations**:
+   - Acknowledgement of secure third-party services like Facebook (for engagement), Mailchimp (for marketing) and Stripe (for payments).
+
+## SEO Configuration
+
+### robots.txt
+
+The `robots.txt` file is located at the root of the project and is used to control how search engine crawlers index the site. It can specify which pages should or should not be crawled by search engines.
+
+- **Location:** `/robots.txt`
+- **Purpose:** Directs web crawlers on which pages to index or avoid.
+
+
+### sitemap.xml
+
+The `sitemap.xml` file is also located at the root of the project. It provides search engines with a map of your website’s pages, making it easier for them to crawl and index the site efficiently.
+
+- **Location:** `/sitemap.xml`
+- **Purpose:** Provides a list of all important pages on the site for search engines.
+
+### Stripe
+
+Stripe is used for handling secure payments in the Relish shop. It allows customers to complete their purchases using card payment methods while ensuring that all transactions are processed safely and efficiently.
+
+### Facebook
+Screenshots of the Relish Facebook page have been used to provide users with a visual representation of our social media presence.
+
+![facebook_page_1](staticfiles/images/screenshots/facebook_page_1.webp)
+figure 2 - Facebook Page_1
+
+![facebook_page_2](staticfiles/images/screenshots/facebook_page_2.webp)
+figure 3 - Facebook Page_2
+
+### Mailchimp
+Mailchimp integration enables the collection and management of customer email subscriptions. It allows us to send newsletters, promotional offers, and updates directly to our users, helping to maintain engagement with our audience.
+
+
+With these features, Relish ensures a secure, efficient, and delightful experience for all users while safeguarding their data and fostering trust.
+
 
 ## Key Objectives
 
@@ -17,7 +92,7 @@ The key objectives for the Relish coffee shop website project are as follows:
 
 Enhance User Experience:
 
-Provide an intuitive and visually appealing interface for customers to browse and make enquires.
+Provide an intuitive and visually appealing interface for customers to browse and make purchases.
 Ensure the website is responsive and accessible on various devices and screen sizes.
 
 Efficient Data Management:
@@ -37,24 +112,6 @@ Compliance with Web Standards:
 
 Validate HTML, CSS, and JavaScript code to ensure compliance with web standards and improve cross-browser compatibility.
 Ensure the website is accessible to users with disabilities, following accessibility guidelines.
-
-## Third-Party Integrations
-
-### Stripe
-
-Stripe is used for handling secure payments in the Relish shop. It allows customers to complete their purchases using card payment methods while ensuring that all transactions are processed safely and efficiently.
-
-### Facebook
-Screenshots of the Relish Facebook page have been used to provide users with a visual representation of our social media presence.
-
-![facebook_page_1](staticfiles/images/screenshots/facebook_page_1.webp)
-figure 2 - Facebook Page_1
-
-![facebook_page_2](staticfiles/images/screenshots/facebook_page_2.webp)
-figure 3 - Facebook Page_2
-
-### Mailchimp
-Mailchimp integration enables the collection and management of customer email subscriptions. It allows us to send newsletters, promotional offers, and updates directly to our users, helping to maintain engagement with our audience.
 
 ## Design Process
 
@@ -78,44 +135,46 @@ Category: Represents different categories of products.
 CoffeeOrigin: Represents the origin of the coffee beans.
 CoffeeGrind: Represents the grind types available for products.
 CoffeeSize: Represents different sizes available for products.
-ERD Diagram
 
-![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.webp)
+![entity-relationship_diagram](staticfiles/images/screenshots/entity-relationship_diagram.png)
 figure 4 - Entity-Relationship Diagrams (ERD)
 
-3. Wireframes
+### 3. Wireframes
 Wireframes were designed to outline the user interface and user experience. They serve as blueprints for the layout and functionality of key pages within the application.
+
+![wireframe](staticfiles/images/screenshots/wireframe.png)
+figure 5 - Wireframe (ERD)
 
 ## User Stories
 
 User stories were essential in guiding the development process, ensuring that the website meets the needs of its users.
 
 ![user_stories](staticfiles/images/screenshots/user_stories.webp)
-figure 5 - User Stories
+figure 6 - User Stories
 
 
 ### Screenshots
 
 ![main_screen](staticfiles/images/screenshots/home_screen.webp)
-figure 6 - Main screen
+figure 7 - Main screen
 
 ![register_form](staticfiles/images/screenshots/register_form.webp)
-figure 7 - Register form
+figure 8 - Register form
 
 ![login_screen](staticfiles/images/screenshots/login_screen.webp)
-figure 8 - Login screen
+figure 9 - Login screen
 
 ![product_detail](staticfiles/images/screenshots/product_detail.webp)
-figure 9 - Product detail page
+figure 10 - Product detail page
 
 ![shopping_bag](staticfiles/images/screenshots/shopping_bag.webp)
-figure 10 - Shopping_bag
+figure 11 - Shopping_bag
 
 ![checkout_success](staticfiles/images/screenshots/checkout_success.webp)
-figure 11 - Checkout_success
+figure 12 - Checkout_success
 
 ![crud_menu](staticfiles/images/screenshots/crud_menu.webp)
-figure 12 - CRUD menu
+figure 13 - CRUD menu
 
 ### 2. Responsive Design
 
@@ -164,29 +223,23 @@ The HTML code was validated using the W3C HTML Validator to ensure it meets web 
 
 #### Testing Screenshots
 
-![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.png)
-figure 13 - Home screen lighthouse test
+![lighthouse_desktop](staticfiles/images/screenshots/lighthouse_desktop.webp)
+figure 14 - Home screen lighthouse test
 
-![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.png)
-figure 14 - product detail lighthouse test
+![lighthouse_product_detail_desktop](staticfiles/images/screenshots/lighthouse_product_detail_desktop.webp)
+figure 15 - product detail lighthouse test
 
 ## Bugs
 
-There are no bugs in the system.
+There is one bug in the system which is the confirmation emails are not being sent, but they work in the shell.
 
 # Deployment
 
 ## Prerequisites
 
-Python 3.x
-Django
-A web browser for testing
+heroku, gunicorn, and psycopg2
 
 ## Deployment steps
-
-Clone the repository: git clone https://github.com/Ross-Fraser/relish.git
-
-Navigate to the project directory: cd relish
 
 Install the required dependencies: pip install -r requirements.txt
 
@@ -218,6 +271,9 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 ## Credit
 
 Code Institute for template and stripe
+
 Code Institute for the deployment terminal.
+
 PEP8 Validator for code validation.
+
 3wSchools.com for breadcrumbs and permissions

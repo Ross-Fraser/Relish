@@ -93,6 +93,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'roastery', 'templates', 'roastery'),
             os.path.join(BASE_DIR, 'bag', 'templates', 'bag'),
             os.path.join(BASE_DIR, 'checkout', 'templates', 'checkout'),
+            os.path.join(BASE_DIR, 'profiles', 'templates', 'profiles'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -129,7 +130,7 @@ EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(str(os.environ.get("DATABASE_URL", "")))
 }
 
 if 'test' in sys.argv:
@@ -169,6 +170,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+TIME_ZONE = "Europe/London"
 
 
 # Static files (CSS, JavaScript, Images)
